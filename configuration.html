@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="index.html"/>
-        <link rel="next" title="How it works?" href="basics.html"/>
-        <link rel="prev" title="Rule Language Reference" href="reference.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How it works?" href="basics.html" />
+    <link rel="prev" title="Rule Language Reference" href="reference.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -111,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">NEAL</a>
@@ -119,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -202,7 +195,7 @@
 <div class="section" id="basic">
 <h3>Basic<a class="headerlink" href="#basic" title="Permalink to this headline">¶</a></h3>
 <p>Only specify the set of rules used in your project and some files to ignore:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;rules&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="s2">&quot;./neal/Python.rules&quot;</span><span class="p">,</span>
     <span class="s2">&quot;./neal/Swift.rules&quot;</span><span class="p">,</span>
@@ -218,7 +211,7 @@
 <div class="section" id="complete">
 <h3>Complete<a class="headerlink" href="#complete" title="Permalink to this headline">¶</a></h3>
 <p>Using <cite>rule-map</cite> and <cite>provider-map</cite>:</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;provider-map&quot;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&quot;Python&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;BUCK$&quot;</span> <span class="p">]</span>
   <span class="p">},</span>
@@ -239,13 +232,13 @@
 </div>
 <div class="section" id="disabling-rules-inline">
 <h2>Disabling rules inline<a class="headerlink" href="#disabling-rules-inline" title="Permalink to this headline">¶</a></h2>
-<p>You can use comments to disable NEAL rules. The comments must have the prefix <code class="docutils literal"><span class="pre">NEAL:</span></code> and can specify the rules to be disabled (or all the rules), the context (the whole file or a given line) and must provide an explanation.</p>
+<p>You can use comments to disable NEAL rules. The comments must have the prefix <code class="docutils literal notranslate"><span class="pre">NEAL:</span></code> and can specify the rules to be disabled (or all the rules), the context (the whole file or a given line) and must provide an explanation.</p>
 <div class="section" id="examples">
 <h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Disabling a specific set of rules for a given line</li>
 </ul>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip RuleA, RuleB and RuleC on the next line because it will be fixed in #123</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip RuleA, RuleB and RuleC on the next line because it will be fixed in #123</span>
 <span class="n">TriggerRuleA</span><span class="p">();</span> <span class="n">TriggerRuleB</span><span class="p">();</span> <span class="n">TriggerRuleC</span><span class="p">();</span>
 
 <span class="n">TriggerRuleA</span><span class="p">();</span> <span class="n">TriggerRuleC</span><span class="p">();</span> <span class="c1">// NEAL: skip RuleA and RuleC on this line because it will be fixed in #412</span>
@@ -257,7 +250,7 @@
 <ul class="simple">
 <li>Disabling all rules for a given line: (all of the following are equivalent)</li>
 </ul>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip all rules on the next line because it will be fixed on #123</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip all rules on the next line because it will be fixed on #123</span>
 <span class="n">lint_error</span><span class="p">();</span> <span class="c1">// NEAL: skip all rules on this line because it will be fixed on #123</span>
 <span class="c1">// NEAL: skip all rules on the previous line line because it will be fixed on #123</span>
 </pre></div>
@@ -265,21 +258,21 @@
 <ul class="simple">
 <li>Disabling a set of rules for a given file</li>
 </ul>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip RuleA, RuleB and RuleC on this file because this file is auto generated.</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip RuleA, RuleB and RuleC on this file because this file is auto generated.</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li>Disabling all rules for a given file</li>
 </ul>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip all rules on this file because this file is auto generated.</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// NEAL: skip all rules on this file because this file is auto generated.</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="runtime-flags">
 <h2>Runtime flags<a class="headerlink" href="#runtime-flags" title="Permalink to this headline">¶</a></h2>
-<p>To enable any of the following flags just set the environment variable with the name of the flag preceded by <code class="docutils literal"><span class="pre">NEAL_</span></code> on your process or when you run NEAL, e.g.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">NEAL_STATS</span><span class="o">=</span><span class="m">1</span> neal <span class="nb">test</span>
+<p>To enable any of the following flags just set the environment variable with the name of the flag preceded by <code class="docutils literal notranslate"><span class="pre">NEAL_</span></code> on your process or when you run NEAL, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nv">NEAL_STATS</span><span class="o">=</span><span class="m">1</span> neal <span class="nb">test</span>
 </pre></div>
 </div>
 <table border="1" class="docutils">
@@ -309,9 +302,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -329,11 +320,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -348,35 +339,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

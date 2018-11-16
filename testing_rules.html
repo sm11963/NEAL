@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="index.html"/>
-        <link rel="next" title="Rule Language Reference" href="reference.html"/>
-        <link rel="prev" title="Tutorial: Writing a new rule" href="rules.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Rule Language Reference" href="reference.html" />
+    <link rel="prev" title="Tutorial: Writing a new rule" href="rules.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -111,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">NEAL</a>
@@ -119,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -172,15 +165,15 @@
 <div class="section" id="forcedvalueexpression">
 <h3>ForcedValueExpression<a class="headerlink" href="#forcedvalueexpression" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the rule that we wrote:</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
   <span class="n">Swift</span><span class="p">::</span><span class="n">ForcedValueExpression</span> <span class="p">{</span>
     <span class="n">fail</span><span class="p">(</span><span class="s">&quot;Force unwrapping optionals is not allowed. Please refactor your code to use `?` instead of `!`&quot;</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>The first thing that we need to do is add a <code class="code docutils literal"><span class="pre">tests</span></code> block to our rule.</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
+<p>The first thing that we need to do is add a <code class="code docutils literal notranslate"><span class="pre">tests</span></code> block to our rule.</p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
   <span class="n">Swift</span><span class="p">::</span><span class="n">ForcedValueExpression</span> <span class="p">{</span>
     <span class="n">fail</span><span class="p">(</span><span class="s">&quot;Force unwrapping optionals is not allowed. Please refactor your code to use `?` instead of `!`&quot;</span><span class="p">)</span>
   <span class="p">}</span>
@@ -191,7 +184,7 @@
 </pre></div>
 </div>
 <p>Now let’s write a simple test, in order to make sure that it reports violations correctly.</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
   <span class="n">Swift</span><span class="p">::</span><span class="n">ForcedValueExpression</span> <span class="p">{</span>
     <span class="n">fail</span><span class="p">(</span><span class="s">&quot;Force unwrapping optionals is not allowed. Please refactor your code to use `?` instead of `!`&quot;</span><span class="p">)</span>
   <span class="p">}</span>
@@ -202,9 +195,9 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>We give the test a name, <code class="code docutils literal"><span class="pre">should_report</span></code>, and write a expectation that the test should report a failure for the input <code class="code docutils literal"><span class="pre">&quot;x!&quot;</span></code>.</p>
+<p>We give the test a name, <code class="code docutils literal notranslate"><span class="pre">should_report</span></code>, and write a expectation that the test should report a failure for the input <code class="code docutils literal notranslate"><span class="pre">&quot;x!&quot;</span></code>.</p>
 <p>We can also add a positive test:</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">rule</span> <span class="n">NoForcedValues</span> <span class="p">{</span>
   <span class="n">Swift</span><span class="p">::</span><span class="n">ForcedValueExpression</span> <span class="p">{</span>
     <span class="n">fail</span><span class="p">(</span><span class="s">&quot;Force unwrapping optionals is not allowed. Please refactor your code to use `?` instead of `!`&quot;</span><span class="p">)</span>
   <span class="p">}</span>
@@ -216,24 +209,24 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Here, again, we give a name to the test, <code class="code docutils literal"><span class="pre">should_pass</span></code>, and this time we use <code class="code docutils literal"><span class="pre">expect_ok</span></code> to check that no violation will be reported for the input <code class="code docutils literal"><span class="pre">&quot;x</span> <span class="pre">!=</span> <span class="pre">y&quot;</span></code>.</p>
+<p>Here, again, we give a name to the test, <code class="code docutils literal notranslate"><span class="pre">should_pass</span></code>, and this time we use <code class="code docutils literal notranslate"><span class="pre">expect_ok</span></code> to check that no violation will be reported for the input <code class="code docutils literal notranslate"><span class="pre">&quot;x</span> <span class="pre">!=</span> <span class="pre">y&quot;</span></code>.</p>
 </div>
 </div>
 <div class="section" id="running-the-tests">
 <h2>Running the tests<a class="headerlink" href="#running-the-tests" title="Permalink to this headline">¶</a></h2>
-<p>You can save the file rule above in a file name, e.g. <code class="code docutils literal"><span class="pre">Swift.rules</span></code>, and then you can run the tests with:</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>neal <span class="nb">test</span> Swift.rules
+<p>You can save the file rule above in a file name, e.g. <code class="code docutils literal notranslate"><span class="pre">Swift.rules</span></code>, and then you can run the tests with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>neal <span class="nb">test</span> Swift.rules
 </pre></div>
 </div>
 <p>And the result should look something like the following.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>✓ Test `should_report&#39; of rule `NoForcedValues&#39; passed
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>✓ Test `should_report&#39; of rule `NoForcedValues&#39; passed
 ✓ Test `should_pass&#39; of rule `NoForcedValues&#39; passed
 
 ✓ 2 tests passed, ⅹ 0 tests failed, ! 0 tests errors
 </pre></div>
 </div>
-<p>If we change the input in the <code class="code docutils literal"><span class="pre">should_report</span></code> test from <code class="code docutils literal"><span class="pre">&quot;x!&quot;</span></code> to <code class="code docutils literal"><span class="pre">&quot;x&quot;</span></code> and re-run the test, it should now report an error as following.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>ⅹ Test `should_report&#39; of rule `NoForcedValues&#39; failed:
+<p>If we change the input in the <code class="code docutils literal notranslate"><span class="pre">should_report</span></code> test from <code class="code docutils literal notranslate"><span class="pre">&quot;x!&quot;</span></code> to <code class="code docutils literal notranslate"><span class="pre">&quot;x&quot;</span></code> and re-run the test, it should now report an error as following.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ⅹ Test `should_report&#39; of rule `NoForcedValues&#39; failed:
         Expected 1 violations, but found 0
 ✓ Test `should_pass&#39; of rule `NoForcedValues&#39; passed
 
@@ -245,9 +238,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -265,11 +256,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -284,35 +275,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

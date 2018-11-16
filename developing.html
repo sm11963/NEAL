@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="index.html"/>
-        <link rel="next" title="Changelog" href="changelog.html"/>
-        <link rel="prev" title="Writing a custom AST Provider" href="components/providers.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Writing a custom AST Provider" href="components/providers.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -111,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">NEAL</a>
@@ -119,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -170,42 +163,42 @@
 <div class="section" id="setup">
 <h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
 <p>First, make sure you have <a class="reference external" href="OPAM">Ocaml Package Manager (OPAM)</a> installed</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ brew install opam
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brew install opam
 </pre></div>
 </div>
 <p>Before you use OPAM for the first time you need to initialise it by running</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ opam init
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ opam init
 </pre></div>
 </div>
 <p>OPAM you give you the option to add the configuration to your bashrc/zshrc so you have it in every session of your terminal. You can also just manually run the command</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nb">eval</span> <span class="k">$(</span>opam config env<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">eval</span> <span class="k">$(</span>opam config env<span class="k">)</span>
 </pre></div>
 </div>
 <p>Before building the project, you can run the setup script to make sure the right version of the compiler and all the dependencies are installed</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make setup
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make setup
 </pre></div>
 </div>
 </div>
 <div class="section" id="building-and-running">
 <h3>Building and running<a class="headerlink" href="#building-and-running" title="Permalink to this headline">¶</a></h3>
 <p>To build the project you can use make</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make build <span class="c1"># build is also the default action</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make build <span class="c1"># build is also the default action</span>
 </pre></div>
 </div>
 <p>By default, Neal will be compiled to bytecode and the executable will be available at <cite>neal/main.bte</cite>. You can also compile Neal to a native binary using</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ <span class="nv">NATIVE</span><span class="o">=</span><span class="m">1</span> make build
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nv">NATIVE</span><span class="o">=</span><span class="m">1</span> make build
 </pre></div>
 </div>
 </div>
 <div class="section" id="tests">
 <h3>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">¶</a></h3>
 <p>In order to run the tests you can also use <cite>make</cite></p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make <span class="nb">test</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make <span class="nb">test</span>
 </pre></div>
 </div>
 <p>The default action will run all the tests, which include Neal’s end-to-end tests and the Swift parser tests.</p>
 <p>Alternatively you can run the coverage target, which runs the tests and at the end will generate a test coverage report</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>$ make coverage
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ make coverage
 $ open neal/_build/coverage/index.html
 </pre></div>
 </div>
@@ -215,9 +208,7 @@ $ open neal/_build/coverage/index.html
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -235,11 +226,11 @@ $ open neal/_build/coverage/index.html
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -254,35 +245,23 @@ $ open neal/_build/coverage/index.html
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

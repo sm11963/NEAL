@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="../index.html"/>
-        <link rel="up" title="Writing your own components" href="index.html"/>
-        <link rel="next" title="Contributing" href="../developing.html"/>
-        <link rel="prev" title="Writing a custom Reporter" href="reporters.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Contributing" href="../developing.html" />
+    <link rel="prev" title="Writing a custom Reporter" href="reporters.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">NEAL</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -176,7 +168,7 @@
 <p>AST Providers in NEAL are responsible for adding support for a new language. They must conform to a small interface, and have complete ownership over the analysis to be done.</p>
 <p>They can either do take care of parsing internally, e.g. using a parser written in OCaml (like the <a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/providers/swift/swift_provider.ml">Swift provider</a>) or call out to an external parser (like the <a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/providers/python/python.ml">Python provider</a>).</p>
 <p>Either way, they must conform to the following interface:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">PROVIDER</span> <span class="o">=</span> <span class="k">sig</span> <span class="k">val</span> <span class="n">name</span><span class="o">:</span> <span class="kt">string</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">PROVIDER</span> <span class="o">=</span> <span class="k">sig</span> <span class="k">val</span> <span class="n">name</span><span class="o">:</span> <span class="kt">string</span>
   <span class="k">val</span> <span class="n">extensions</span><span class="o">:</span> <span class="kt">string</span> <span class="kt">list</span>
   <span class="k">val</span> <span class="n">parse</span><span class="o">:</span> <span class="n">filename</span> <span class="o">-&gt;</span> <span class="n">source</span> <span class="o">-&gt;</span> <span class="nn">Absyn</span><span class="p">.</span><span class="n">absyn</span>
   <span class="k">val</span> <span class="n">exports</span> <span class="o">:</span> <span class="o">(</span><span class="n">function_name</span> <span class="o">*</span> <span class="n">exported_function</span><span class="o">)</span> <span class="kt">list</span>
@@ -184,7 +176,7 @@
 </pre></div>
 </div>
 <p>With the following type aliases:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">exported_function</span> <span class="o">=</span> <span class="nn">Ctx</span><span class="p">.</span><span class="n">ctx</span> <span class="o">-&gt;</span> <span class="nn">Rule</span><span class="p">.</span><span class="n">literal</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="nn">Rule</span><span class="p">.</span><span class="n">literal</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">exported_function</span> <span class="o">=</span> <span class="nn">Ctx</span><span class="p">.</span><span class="n">ctx</span> <span class="o">-&gt;</span> <span class="nn">Rule</span><span class="p">.</span><span class="n">literal</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="nn">Rule</span><span class="p">.</span><span class="n">literal</span>
 <span class="k">type</span> <span class="n">filename</span> <span class="o">=</span> <span class="kt">string</span>
 <span class="k">type</span> <span class="n">source</span> <span class="o">=</span> <span class="kt">string</span>
 <span class="k">type</span> <span class="n">function_name</span> <span class="o">=</span> <span class="kt">string</span>
@@ -193,9 +185,9 @@
 <div class="section" id="using-a-custom-provider">
 <h2>Using a custom provider<a class="headerlink" href="#using-a-custom-provider" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Custom providers must be compiled to a <code class="docutils literal"><span class="pre">.cmxs</span></code> file, which is OCaml’s dynamic library format (as described <a class="reference external" href="../components#plugins">here</a>);</li>
-<li>They must have <code class="docutils literal"><span class="pre">.provider</span></code> suffix before the <code class="docutils literal"><span class="pre">.cmxs</span></code> extension, e.g. <code class="docutils literal"><span class="pre">swift.provider.cmxs</span></code>;</li>
-<li>You must tell NEAL the path to your provider (using the <code class="docutils literal"><span class="pre">-p</span></code>/<code class="docutils literal"><span class="pre">--provider</span></code> <a class="reference external" href="../configuration.html#flags">configuration flag</a>).</li>
+<li>Custom providers must be compiled to a <code class="docutils literal notranslate"><span class="pre">.cmxs</span></code> file, which is OCaml’s dynamic library format (as described <a class="reference external" href="../components#plugins">here</a>);</li>
+<li>They must have <code class="docutils literal notranslate"><span class="pre">.provider</span></code> suffix before the <code class="docutils literal notranslate"><span class="pre">.cmxs</span></code> extension, e.g. <code class="docutils literal notranslate"><span class="pre">swift.provider.cmxs</span></code>;</li>
+<li>You must tell NEAL the path to your provider (using the <code class="docutils literal notranslate"><span class="pre">-p</span></code>/<code class="docutils literal notranslate"><span class="pre">--provider</span></code> <a class="reference external" href="../configuration.html#flags">configuration flag</a>).</li>
 </ul>
 <p>After that NEAL should already be able to parse files using your new provider and evaluate rules that target it.</p>
 <p>## Examples</p>
@@ -203,7 +195,7 @@
 <div class="section" id="swift-provider">
 <h3><a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/providers/swift/swift_provider.ml">Swift provider</a><a class="headerlink" href="#swift-provider" title="Permalink to this headline">¶</a></h3>
 <p>Here’s the current implementation (we’ll discuss it below):</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="nn">Provider</span><span class="p">.</span><span class="n">register</span><span class="o">(</span><span class="k">module</span> <span class="k">struct</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="nn">Provider</span><span class="p">.</span><span class="n">register</span><span class="o">(</span><span class="k">module</span> <span class="k">struct</span>
   <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Swift&quot;</span>
   <span class="k">let</span> <span class="n">extensions</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;.swift&quot;</span><span class="o">]</span>
   <span class="k">let</span> <span class="n">parse</span> <span class="n">filename</span> <span class="n">source</span> <span class="o">=</span> <span class="nn">Parser</span><span class="p">.</span><span class="n">parse</span> <span class="n">filename</span> <span class="n">source</span>
@@ -222,7 +214,7 @@
 <div class="section" id="python-provider">
 <h3><a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/providers/python/python.ml">Python provider</a><a class="headerlink" href="#python-provider" title="Permalink to this headline">¶</a></h3>
 <p>The actual Python provider module looks very similar to the Swift one:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="bp">()</span> <span class="o">=</span> <span class="nn">Provider</span><span class="p">.</span><span class="n">register</span><span class="o">(</span><span class="k">module</span> <span class="k">struct</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="bp">()</span> <span class="o">=</span> <span class="nn">Provider</span><span class="p">.</span><span class="n">register</span><span class="o">(</span><span class="k">module</span> <span class="k">struct</span>
   <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Python&quot;</span>
   <span class="k">let</span> <span class="n">extensions</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;.py&quot;</span><span class="o">]</span>
   <span class="k">let</span> <span class="n">parse</span> <span class="o">=</span> <span class="n">parse</span>
@@ -230,8 +222,8 @@
 <span class="k">end</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>The main different is the <code class="docutils literal"><span class="pre">parse</span></code> function. Here, instead of actually parsing the file and generating the AST all in OCaml, it calls out to a script which uses the parser built into the python interpreter to generate the AST and dumps it as JSON.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">exec_name</span> <span class="o">=</span> <span class="nn">Neal</span><span class="p">.</span><span class="nn">Utils</span><span class="p">.</span><span class="n">relative_path</span> <span class="s2">&quot;providers/helpers/dump_python_ast.py&quot;</span>
+<p>The main different is the <code class="docutils literal notranslate"><span class="pre">parse</span></code> function. Here, instead of actually parsing the file and generating the AST all in OCaml, it calls out to a script which uses the parser built into the python interpreter to generate the AST and dumps it as JSON.</p>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">exec_name</span> <span class="o">=</span> <span class="nn">Neal</span><span class="p">.</span><span class="nn">Utils</span><span class="p">.</span><span class="n">relative_path</span> <span class="s2">&quot;providers/helpers/dump_python_ast.py&quot;</span>
 
 <span class="k">let</span> <span class="n">parse</span> <span class="n">filename</span> <span class="o">_</span> <span class="o">=</span>
   <span class="k">let</span> <span class="n">cmd</span> <span class="o">=</span> <span class="nn">Printf</span><span class="p">.</span><span class="n">sprintf</span> <span class="s2">&quot;%s %s&quot;</span> <span class="n">exec_name</span> <span class="n">filename</span> <span class="k">in</span>
@@ -241,16 +233,14 @@
   <span class="n">absyn_of_json</span> <span class="n">json</span>
 </pre></div>
 </div>
-<p>The implementation of <code class="docutils literal"><span class="pre">absyn_of_json</span></code> simply takes the JSON parsed using <a class="reference external" href="https://github.com/mjambon/yojson">yojson</a> and converts it to NEAL’s AST type. You can check the <a class="reference external" href="Pythonprovider">source code</a>, but here will ignore it as an implementation detail.</p>
+<p>The implementation of <code class="docutils literal notranslate"><span class="pre">absyn_of_json</span></code> simply takes the JSON parsed using <a class="reference external" href="https://github.com/mjambon/yojson">yojson</a> and converts it to NEAL’s AST type. You can check the <a class="reference external" href="Pythonprovider">source code</a>, but here will ignore it as an implementation detail.</p>
 </div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -268,11 +258,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -287,35 +277,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="../index.html"/>
-        <link rel="up" title="Writing your own components" href="index.html"/>
-        <link rel="next" title="Writing a custom AST Provider" href="providers.html"/>
-        <link rel="prev" title="Writing your own components" href="index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Writing a custom AST Provider" href="providers.html" />
+    <link rel="prev" title="Writing your own components" href="index.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">NEAL</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -175,14 +167,14 @@
 <h1>Writing a custom Reporter<a class="headerlink" href="#writing-a-custom-reporter" title="Permalink to this headline">¶</a></h1>
 <p>Reporters are the components who take the all the violations found in the files analysed and output them in an appropriate format. As an example, NEAL ships with two builtin formatters: <a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/reporters/cli/cli_reporter.ml">CLI</a> and <a class="reference external" href="https://github.com/uber/NEAL/blob/master/src/reporters/arc/arc_reporter.ml">ARC</a>, the former to pretty print the errors in the command line and the latter to integrate with <a class="reference external" href="https://secure.phabricator.com/book/phabricator/article/arcanist/">Arcanist</a> (Phabricator’s command line interface).</p>
 <p>The interface for creating a reporter currently consists of a single method:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">REPORTER</span> <span class="o">=</span> <span class="k">sig</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="k">type</span> <span class="nc">REPORTER</span> <span class="o">=</span> <span class="k">sig</span>
   <span class="k">val</span> <span class="n">name</span> <span class="o">:</span> <span class="kt">string</span>
   <span class="k">val</span> <span class="n">report</span> <span class="o">:</span> <span class="n">severity</span> <span class="o">-&gt;</span> <span class="nn">Ctx</span><span class="p">.</span><span class="n">ctx</span> <span class="o">-&gt;</span> <span class="n">fix</span> <span class="o">-&gt;</span> <span class="kt">unit</span>
 <span class="k">end</span>
 </pre></div>
 </div>
 <p>And the definition for the <cite>sevirity</cite> and <cite>fix</cite> types is as follows:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">severity</span> <span class="o">=</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">severity</span> <span class="o">=</span>
   <span class="o">|</span> <span class="nc">Error</span>
   <span class="o">|</span> <span class="nc">Warning</span>
   <span class="o">|</span> <span class="nc">Other</span>
@@ -203,7 +195,7 @@
 <div class="section" id="sample-reporter-arc">
 <h2>Sample reporter (ARC)<a class="headerlink" href="#sample-reporter-arc" title="Permalink to this headline">¶</a></h2>
 <p>As example, here’s the simplest reporter so far, the ARC reporter mentioned above:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Arc</span> <span class="o">=</span> <span class="k">struct</span>
+<div class="highlight-ocaml notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="nc">Arc</span> <span class="o">=</span> <span class="k">struct</span>
   <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;arc&quot;</span>
 
   <span class="k">let</span> <span class="n">report</span> <span class="n">severity</span> <span class="n">ctx</span> <span class="o">(</span><span class="nn">R</span><span class="p">.</span><span class="nc">Suggestion</span> <span class="n">fix</span><span class="o">)</span> <span class="o">=</span>
@@ -218,9 +210,7 @@
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -238,11 +228,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -257,35 +247,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

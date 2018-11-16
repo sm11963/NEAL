@@ -24,27 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="NEAL 0.2.4 documentation" href="index.html"/>
-        <link rel="next" title="Configuration" href="configuration.html"/>
-        <link rel="prev" title="Testing your rules" href="testing_rules.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Testing your rules" href="testing_rules.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -111,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">NEAL</a>
@@ -119,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -167,7 +160,7 @@
 <h1>Rule Language Reference<a class="headerlink" href="#rule-language-reference" title="Permalink to this headline">¶</a></h1>
 <p>A quick reference to all the builtin functions, operators and actions.</p>
 <ul class="simple">
-<li><a class="reference internal" href="#functions">Functions</a> are used in predicates (i.e. in the <code class="code docutils literal"><span class="pre">where</span></code> clause) of matchers.</li>
+<li><a class="reference internal" href="#functions">Functions</a> are used in predicates (i.e. in the <code class="code docutils literal notranslate"><span class="pre">where</span></code> clause) of matchers.</li>
 <li><a class="reference internal" href="#operators">Operators</a> can be used to combine multiple expressions within predicates.</li>
 <li><a class="reference internal" href="#actions">Actions</a> can be taken in the body of match.</li>
 <li><a class="reference internal" href="#ast-providers">AST Providers</a> can also export Functions and Actions.</li>
@@ -175,62 +168,62 @@
 <li><a class="reference internal" href="#scoped-matchers">Scoped Matchers</a> can be used to restrict a matcher’s breadth and depth.</li>
 </ul>
 <p><strong>Example:</strong></p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="k">where</span> <span class="n">not</span><span class="p">(</span><span class="n">Public</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">Override</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">Function</span> <span class="k">where</span> <span class="n">not</span><span class="p">(</span><span class="n">Public</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">Override</span> <span class="p">{</span>
   <span class="n">fail</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the sample matcher above, <code class="code docutils literal"><span class="pre">not</span></code> is a function, <code class="code docutils literal"><span class="pre">&amp;&amp;</span></code> is an operator and <code class="code docutils literal"><span class="pre">fail</span></code> is an action.</p>
+<p>In the sample matcher above, <code class="code docutils literal notranslate"><span class="pre">not</span></code> is a function, <code class="code docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> is an operator and <code class="code docutils literal notranslate"><span class="pre">fail</span></code> is an action.</p>
 <hr class="docutils" />
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="match-property-regexp">
-<h3><code class="code docutils literal"><span class="pre">match(Property,</span> <span class="pre">RegExp)</span></code><a class="headerlink" href="#match-property-regexp" title="Permalink to this headline">¶</a></h3>
-<p>Tries to convert the value of <code class="code docutils literal"><span class="pre">Property</span></code> to a string, and matches it against the regular expression in <code class="code docutils literal"><span class="pre">RegExp</span></code>.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">match(Property,</span> <span class="pre">RegExp)</span></code><a class="headerlink" href="#match-property-regexp" title="Permalink to this headline">¶</a></h3>
+<p>Tries to convert the value of <code class="code docutils literal notranslate"><span class="pre">Property</span></code> to a string, and matches it against the regular expression in <code class="code docutils literal notranslate"><span class="pre">RegExp</span></code>.</p>
 </div>
 <div class="section" id="not-expression">
-<h3><code class="code docutils literal"><span class="pre">not(Expression)</span></code><a class="headerlink" href="#not-expression" title="Permalink to this headline">¶</a></h3>
-<p>Converts the value of <code class="code docutils literal"><span class="pre">Expression</span></code> to a boolean value and performs a logical negation.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">not(Expression)</span></code><a class="headerlink" href="#not-expression" title="Permalink to this headline">¶</a></h3>
+<p>Converts the value of <code class="code docutils literal notranslate"><span class="pre">Expression</span></code> to a boolean value and performs a logical negation.</p>
 </div>
 <div class="section" id="count-list">
-<h3><code class="code docutils literal"><span class="pre">count(List)</span></code><a class="headerlink" href="#count-list" title="Permalink to this headline">¶</a></h3>
-<p>Converts the value of <cite>List</cite> to a list and returns the number of elements in the list. Returns <code class="code docutils literal"><span class="pre">0</span></code> if <code class="code docutils literal"><span class="pre">List</span></code> is not an actual list.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">count(List)</span></code><a class="headerlink" href="#count-list" title="Permalink to this headline">¶</a></h3>
+<p>Converts the value of <cite>List</cite> to a list and returns the number of elements in the list. Returns <code class="code docutils literal notranslate"><span class="pre">0</span></code> if <code class="code docutils literal notranslate"><span class="pre">List</span></code> is not an actual list.</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="operators">
 <h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="expression1-expression2">
-<h3><code class="code docutils literal"><span class="pre">Expression1</span> <span class="pre">==</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#expression1-expression2" title="Permalink to this headline">¶</a></h3>
+<h3><code class="code docutils literal notranslate"><span class="pre">Expression1</span> <span class="pre">==</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#expression1-expression2" title="Permalink to this headline">¶</a></h3>
 <p>Structural equality operator.</p>
 </div>
 <div class="section" id="id1">
-<h3><code class="code docutils literal"><span class="pre">Expression1</span> <span class="pre">!=</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Negation of <code class="code docutils literal"><span class="pre">Expression1</span> <span class="pre">==</span> <span class="pre">Expression2</span></code></p>
+<h3><code class="code docutils literal notranslate"><span class="pre">Expression1</span> <span class="pre">!=</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Negation of <code class="code docutils literal notranslate"><span class="pre">Expression1</span> <span class="pre">==</span> <span class="pre">Expression2</span></code></p>
 </div>
 <div class="section" id="id2">
-<h3><code class="code docutils literal"><span class="pre">Expression1</span> <span class="pre">&amp;&amp;</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Converts both <code class="code docutils literal"><span class="pre">Expression1</span></code> and <code class="code docutils literal"><span class="pre">Expression2</span></code> to boolean values and performs a boolean “and”.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">Expression1</span> <span class="pre">&amp;&amp;</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Converts both <code class="code docutils literal notranslate"><span class="pre">Expression1</span></code> and <code class="code docutils literal notranslate"><span class="pre">Expression2</span></code> to boolean values and performs a boolean “and”.</p>
 </div>
 <div class="section" id="id3">
-<h3><code class="code docutils literal"><span class="pre">Expression1</span> <span class="pre">||</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>Converts both <code class="code docutils literal"><span class="pre">Expression1</span></code> and <code class="code docutils literal"><span class="pre">Expression2</span></code> to boolean values and performs a boolean “or”.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">Expression1</span> <span class="pre">||</span> <span class="pre">Expression2</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Converts both <code class="code docutils literal notranslate"><span class="pre">Expression1</span></code> and <code class="code docutils literal notranslate"><span class="pre">Expression2</span></code> to boolean values and performs a boolean “or”.</p>
 </div>
 <div class="section" id="node-property">
-<h3><code class="code docutils literal"><span class="pre">node.property</span></code><a class="headerlink" href="#node-property" title="Permalink to this headline">¶</a></h3>
-<p>Access <code class="docutils literal"><span class="pre">property</span></code> of the AST <code class="docutils literal"><span class="pre">node</span></code>. If the <code class="docutils literal"><span class="pre">node</span></code> is actually a list of nodes, the property access works like flatMap: the property access is computed for every node in the list and then compacted into a new list.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">node.property</span></code><a class="headerlink" href="#node-property" title="Permalink to this headline">¶</a></h3>
+<p>Access <code class="docutils literal notranslate"><span class="pre">property</span></code> of the AST <code class="docutils literal notranslate"><span class="pre">node</span></code>. If the <code class="docutils literal notranslate"><span class="pre">node</span></code> is actually a list of nodes, the property access works like flatMap: the property access is computed for every node in the list and then compacted into a new list.</p>
 </div>
 </div>
 <hr class="docutils" />
 <div class="section" id="actions">
 <h2>Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fail-explanation">
-<h3><code class="code docutils literal"><span class="pre">fail(Explanation)</span></code><a class="headerlink" href="#fail-explanation" title="Permalink to this headline">¶</a></h3>
-<p>Reports that an error was found in the current node being matched. <code class="code docutils literal"><span class="pre">Explanation</span></code> should be a string explaining why is this is a violation and, ideally, how to correct it.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">fail(Explanation)</span></code><a class="headerlink" href="#fail-explanation" title="Permalink to this headline">¶</a></h3>
+<p>Reports that an error was found in the current node being matched. <code class="code docutils literal notranslate"><span class="pre">Explanation</span></code> should be a string explaining why is this is a violation and, ideally, how to correct it.</p>
 </div>
 <div class="section" id="warn-explanation">
-<h3><code class="code docutils literal"><span class="pre">warn(Explanation)</span></code><a class="headerlink" href="#warn-explanation" title="Permalink to this headline">¶</a></h3>
-<p>Similar to <code class="code docutils literal"><span class="pre">fail(Explanation)</span></code>, but reports a warning instead of an error.</p>
+<h3><code class="code docutils literal notranslate"><span class="pre">warn(Explanation)</span></code><a class="headerlink" href="#warn-explanation" title="Permalink to this headline">¶</a></h3>
+<p>Similar to <code class="code docutils literal notranslate"><span class="pre">fail(Explanation)</span></code>, but reports a warning instead of an error.</p>
 </div>
 </div>
 <hr class="docutils" />
@@ -239,8 +232,8 @@
 <div class="section" id="swift">
 <h3>Swift<a class="headerlink" href="#swift" title="Permalink to this headline">¶</a></h3>
 <p>The Swift provider only exports one convenience function:</p>
-<p><code class="code docutils literal"><span class="pre">inheritsFrom(ClassName)</span></code></p>
-<p>This function assumes that a class is being matched and will return <code class="code docutils literal"><span class="pre">true</span></code> if the string <code class="code docutils literal"><span class="pre">ClassName</span></code> appears in the inheritance clause of the class declaration. It returns <code class="code docutils literal"><span class="pre">false</span></code> if either the current node does not have a <code class="code docutils literal"><span class="pre">TypeInheritanceClause</span></code> (i.e. it’s not a <code class="code docutils literal"><span class="pre">ClassDeclaration</span></code>) or if the string <code class="code docutils literal"><span class="pre">ClassName</span></code> does not appear in the inheritance clause.</p>
+<p><code class="code docutils literal notranslate"><span class="pre">inheritsFrom(ClassName)</span></code></p>
+<p>This function assumes that a class is being matched and will return <code class="code docutils literal notranslate"><span class="pre">true</span></code> if the string <code class="code docutils literal notranslate"><span class="pre">ClassName</span></code> appears in the inheritance clause of the class declaration. It returns <code class="code docutils literal notranslate"><span class="pre">false</span></code> if either the current node does not have a <code class="code docutils literal notranslate"><span class="pre">TypeInheritanceClause</span></code> (i.e. it’s not a <code class="code docutils literal notranslate"><span class="pre">ClassDeclaration</span></code>) or if the string <code class="code docutils literal notranslate"><span class="pre">ClassName</span></code> does not appear in the inheritance clause.</p>
 </div>
 <div class="section" id="python">
 <h3>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h3>
@@ -250,11 +243,11 @@
 <hr class="docutils" />
 <div class="section" id="variables-conditions">
 <h2>Variables &amp; Conditions<a class="headerlink" href="#variables-conditions" title="Permalink to this headline">¶</a></h2>
-<p>NEAL allows you to declare boolean variables inside a matcher. Those variables can be mutated from nested matchers and used in <code class="docutils literal"><span class="pre">where</span></code> clauses and conditions.</p>
+<p>NEAL allows you to declare boolean variables inside a matcher. Those variables can be mutated from nested matchers and used in <code class="docutils literal notranslate"><span class="pre">where</span></code> clauses and conditions.</p>
 <div class="section" id="declaring-a-new-variable">
 <h3>Declaring a new variable<a class="headerlink" href="#declaring-a-new-variable" title="Permalink to this headline">¶</a></h3>
-<p>Variable declarations must be prefix with <code class="docutils literal"><span class="pre">var</span></code> and have a initial value assigned to it.</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
+<p>Variable declarations must be prefix with <code class="docutils literal notranslate"><span class="pre">var</span></code> and have a initial value assigned to it.</p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
 <span class="hll">  <span class="kd">var</span> <span class="nv">is_valid</span> <span class="p">:=</span> <span class="kc">true</span>
 </span><span class="hll">  <span class="kd">var</span> <span class="nv">did_match</span> <span class="p">:=</span> <span class="kc">false</span>
 </span><span class="p">}</span>
@@ -264,7 +257,7 @@
 <div class="section" id="mutating-a-variable">
 <h3>Mutating a variable<a class="headerlink" href="#mutating-a-variable" title="Permalink to this headline">¶</a></h3>
 <p>Variables are block-scoped and can be mutated from nested matchers at any depth.</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">is_valid</span> <span class="p">:=</span> <span class="kc">true</span>
   <span class="kd">var</span> <span class="nv">did_match</span> <span class="p">:=</span> <span class="kc">false</span>
 
@@ -282,7 +275,7 @@
 <div class="section" id="conditions">
 <h3>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h3>
 <p>Conditions are evaluated when exiting the node and can be used in conjunction with variables to check that a series of pre-conditions within that node.</p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">Provider</span><span class="p">::</span><span class="n">Matcher</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nv">is_valid</span> <span class="p">:=</span> <span class="kc">true</span>
   <span class="kd">var</span> <span class="nv">did_match</span> <span class="p">:=</span> <span class="kc">false</span>
 
@@ -305,24 +298,22 @@
 <hr class="docutils" />
 <div class="section" id="scoped-matchers">
 <h2>Scoped Matchers<a class="headerlink" href="#scoped-matchers" title="Permalink to this headline">¶</a></h2>
-<p>Any matcher can be scoped to a given property of it’s parent matcher, thus restricting in breadth: instead of searching through all the properties of the current AST node, restrict it to a single property. The choice of the operator used for scoping (<code class="docutils literal"><span class="pre">&gt;</span></code> vs <code class="docutils literal"><span class="pre">&gt;&gt;</span></code>) can be used to restrict in depth: <code class="docutils literal"><span class="pre">&gt;</span></code> will match only immediate children nodes, <code class="docutils literal"><span class="pre">&gt;&gt;</span></code> will nodes at any depth.</p>
-<p>For example, the following matcher will match <code class="docutils literal"><span class="pre">class</span> <span class="pre">C</span> <span class="pre">{</span> <span class="pre">var</span> <span class="pre">x:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span> <span class="pre">}</span></code> but not <code class="docutils literal"><span class="pre">class</span> <span class="pre">C</span> <span class="pre">{</span> <span class="pre">func</span> <span class="pre">f()</span> <span class="pre">{</span> <span class="pre">var</span> <span class="pre">x:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span> <span class="pre">}</span> <span class="pre">}</span></code></p>
-<div class="highlight-swift"><div class="highlight"><pre><span></span><span class="n">Swift</span><span class="p">::</span><span class="n">Class</span> <span class="p">{</span>
+<p>Any matcher can be scoped to a given property of it’s parent matcher, thus restricting in breadth: instead of searching through all the properties of the current AST node, restrict it to a single property. The choice of the operator used for scoping (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code> vs <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code>) can be used to restrict in depth: <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> will match only immediate children nodes, <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> will nodes at any depth.</p>
+<p>For example, the following matcher will match <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">C</span> <span class="pre">{</span> <span class="pre">var</span> <span class="pre">x:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span> <span class="pre">}</span></code> but not <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">C</span> <span class="pre">{</span> <span class="pre">func</span> <span class="pre">f()</span> <span class="pre">{</span> <span class="pre">var</span> <span class="pre">x:</span> <span class="pre">String</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span> <span class="pre">}</span> <span class="pre">}</span></code></p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="n">Swift</span><span class="p">::</span><span class="n">Class</span> <span class="p">{</span>
   <span class="n">ClassBody</span> <span class="o">&gt;</span> <span class="n">VariableDeclaration</span> <span class="p">{</span>
     <span class="n">fail</span><span class="p">(</span><span class="s">&quot;...&quot;</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Replacing the <code class="docutils literal"><span class="pre">&gt;</span></code> operator with <code class="docutils literal"><span class="pre">&gt;&gt;</span></code> would lead to matching both cases.</p>
+<p>Replacing the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> operator with <code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code> would lead to matching both cases.</p>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -340,11 +331,11 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Tadeu Zagallo.
+        &copy; Copyright 2017, Tadeu Zagallo
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -359,35 +350,23 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.2.4',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
